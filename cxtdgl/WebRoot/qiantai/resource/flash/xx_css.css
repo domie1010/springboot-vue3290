@@ -1,0 +1,36 @@
+#preview{ float:none; margin:0px auto; width:470px;  }
+.jqzoom{ border:1px solid #cccccc; background-color:#FFFFFF;  width:470px; height:350px;
+display: table-cell;
+vertical-align:middle;/*设置水平居中*/
+text-align:center;/* 针对IE的Hack */ 
+*display: block; 
+*font-size: 306px;/*约为高度的0.873，200*0.873 约为175*/ 
+*font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
+  -webkit-box-shadow: 2px 2px 2px #e2e2e2;  
+  -moz-box-shadow: 2px 2px 2px #e2e2e2;
+  box-shadow: 2px 2px 2px #e2e2e2; 
+ }
+.jqzoom img{vertical-align:middle;max-width:470px;_width:expression(this.width > 470 ? "470px" : this.width);_width:expression(this.height > 350 ? "350px" : this.height);max-height:350px;}
+
+
+
+
+.zoomdiv{ left:859px; height:400px; width:400px;}
+.list-h li{ float:left;}
+#spec-n5{width:475px; height:56px; margin-top:10px; overflow:hidden;}
+#spec-left{ background:url(left.gif) no-repeat; width:10px; height:45px; float:left; cursor:pointer; margin-top:5px;}
+#spec-right{background:url(right.gif) no-repeat; width:10px; height:45px; float:left;cursor:pointer; margin-top:5px;}
+#spec-list{ width:445px; float:left; overflow:hidden; margin-right:6px; display:inline;}
+#spec-list ul{ padding-left:5px;}
+#spec-list ul li{ float:left; margin-right:0px; display:inline; width:84px;}
+#spec-list ul li img{ padding:2px ; border:1px solid #ccc; width:74px; height:50px;}
+
+/*jqzoom*/
+
+
+
+
+#Product{ font-size:12px;}
+.cp_title{font-size: 12px;;  display:block; width:95px; text-align:center; line-height:30px; background-color:#0784c5 ; color:#FFFFFF; font-weight:bold;}
+.cp_title1{ text-align:center; padding:10px 0px; font-size:18px; font-family:"Microsoft YaHei"; color:#d91d1d;}
+.cp_xx{padding-top:10px; line-height:22px; font-size:12px;} .cp_xx p{ font-size:12px;}

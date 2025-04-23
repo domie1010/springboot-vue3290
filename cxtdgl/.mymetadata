@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="cxtdgl"
+  id="myeclipse.1450734992652"
+  context-root="/cxtdgl"
+  j2ee-spec="5.0"
+  archive="cxtdgl.war">
+  <attributes>
+    <attribute name="webrootdir" value="/WebRoot" />
+  </attributes>
+</project-module>
+

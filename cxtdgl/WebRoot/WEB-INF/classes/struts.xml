@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!-- 请求参数的编码方式 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 指定被struts2处理的请求后缀类型。多个用逗号隔开  -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 当struts.xml改动后，是否重新加载。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 是否使用struts的开发模式。开发模式会有更多的调试信息。默认值为false(生产环境下使用),开发阶段最好打开 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 设置浏览器是否缓存静态内容。默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	<!-- 是否允许在OGNL表达式中调用静态方法，默认值为false -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<!-- 指定由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- 是否开启动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir -->
+	<!-- <constant name="struts.multipart.saveDir " value="d:/tmp" /> -->
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 拦截器 -->
+		<interceptors>
+			<!-- 登录验证 -->
+			<interceptor name="loginVerify" class="org.front.LoginInterceptor"></interceptor>
+			<interceptor-stack name="verify">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="loginVerify"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="verify"></default-interceptor-ref>
+		<global-results>
+			<result name="error">/pages/error.jsp</result>
+			<result name="login">/pages/login.jsp</result>
+			<result name="message">/pages/message.jsp</result>
+		</global-results>
+
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<action name="admin" class="AdminAction">
+			<result name="success">/pages/houtai/index.jsp</result>
+		</action>
+
+		<action name="codeImage" class="CodeImageAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="login-*" class="LoginAction" method="{1}">
+			<result name="loginPage">/pages/login.jsp</result>
+			<result name="regeditpage">/pages/regedit.jsp</result>
+			<result name="regeditsuccess">/pages/login.jsp</result>
+			<result name="success" type="redirectAction">admin</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="user-*" class="UserAction" method="{1}">
+			<result name="list">/pages/houtai/user/list.jsp</result>
+			<result name="edit">/pages/houtai/user/edit.jsp</result>
+			<result name="update">/pages/houtai/user/update.jsp</result>
+			<result name="success" type="redirectAction">user-list</result>
+		</action>
+
+		<action name="channel-*" class="ChannelAction" method="{1}">
+			<result name="list">/pages/houtai/channel/list.jsp</result>
+			<result name="edit">/pages/houtai/channel/edit.jsp</result>
+			<result name="success" type="redirectAction">channel-list</result>
+		</action>
+		<action name="document-*" class="DocumentAction" method="{1}">
+			<result name="list">/pages/houtai/document/list.jsp</result>
+			<result name="edit">/pages/houtai/document/edit.jsp</result>
+			<result name="success" type="redirectAction">document-list</result>
+		</action>
+		<action name="index-*" class="IndexAction" method="{1}">
+			<result name="index">/qiantai/page/index.jsp</result>
+			<result name="list">/qiantai/page/list.jsp</result>
+			<result name="content">/qiantai/page/content.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="log-*" class="LogAction" method="{1}">
+			<result name="list">/pages/houtai/log/list.jsp</result>
+			<result name="query">/pages/houtai/log/query.jsp</result>
+			<result name="edit">/pages/houtai/log/edit.jsp</result>
+			<result name="success" type="redirectAction">log-list</result>
+		</action>
+		<action name="mess-*" class="MessAction" method="{1}">
+			<result name="list">/pages/houtai/mess/list.jsp</result>
+			<result name="query">/pages/houtai/mess/query.jsp</result>
+			<result name="edit">/pages/houtai/mess/edit.jsp</result>
+			<result name="success" type="redirectAction">mess-list</result>
+		</action>
+	</package>
+</struts>
